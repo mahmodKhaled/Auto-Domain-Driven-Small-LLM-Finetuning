@@ -1,5 +1,6 @@
+import os
 from src.data_collection import DataCollector
-from src.utils import load_config, create_colored_logger
+from src.utils import load_config, create_colored_logger, save_str_to_txt
 
 logger = create_colored_logger()
 
@@ -18,6 +19,8 @@ def finetune_pipeline(
     for title in topic_titles:
         page_content = collector.get_page_content(title)
         if page_content:
+            file_path = os.path.join("data/raw", f'{topic_name}', f"{page_content['title']}.txt")
+            save_str_to_txt(page_content["content"], file_path)
             logger.info(f"Successfully retrieved content for {title} Article")
         else:
             logger.warning(f"Failed to retrieve content for {title} Article")

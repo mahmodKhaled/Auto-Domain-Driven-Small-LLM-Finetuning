@@ -1,3 +1,4 @@
+import os
 import yaml
 import logging
 from typing import Dict
@@ -33,3 +34,13 @@ def create_colored_logger(
         logger.addHandler(handler)
 
     return logger
+
+def save_str_to_txt(
+    content: str,
+    file_path: str
+) -> str:
+    if not os.path.exists(os.path.dirname(file_path)):
+        os.makedirs(os.path.dirname(file_path))
+    
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)

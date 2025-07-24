@@ -1,3 +1,6 @@
 wikipedia
 pyyaml
 colorlog
+unsloth
+vllm==0.8.5.post1
+synthetic-data-kit==0.0.3
